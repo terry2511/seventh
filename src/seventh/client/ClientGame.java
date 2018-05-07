@@ -1340,18 +1340,7 @@ public class ClientGame {
                                         /* dampen the sound of the local players footsteps,
                                          * otherwise it's too loud
                                          */
-                                        switch(snd.getSoundType()) {
-                                            case SURFACE_DIRT:
-                                            case SURFACE_GRASS:
-                                            case SURFACE_METAL:
-                                            case SURFACE_NORMAL:
-                                            case SURFACE_SAND:
-                                            case SURFACE_WATER:
-                                            case SURFACE_WOOD:
-                                                Sounds.playSound(snd, pos.x, pos.y, 0.35f );
-                                                break;
-                                            default: Sounds.playSound(snd, pos.x, pos.y );
-                                        }                                        
+                                        setSoundType(snd, pos);                                        
                                     }
                                     else {                                    
                                         Sounds.playSound(snd, pos.x, pos.y);
