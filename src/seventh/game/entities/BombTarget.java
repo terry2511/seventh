@@ -5,7 +5,6 @@
 package seventh.game.entities;
 
 import seventh.game.Game;
-import seventh.game.Team;
 import seventh.game.net.NetBombTarget;
 import seventh.game.net.NetEntity;
 import seventh.math.Vector2f;
@@ -23,16 +22,13 @@ public class BombTarget extends Entity {
     private NetBombTarget netBombTarget;
     private Bomb bomb;
     
-    private Team owner;
     
     /**
      * @param position
      * @param game
      */
-    public BombTarget(Team owner, Vector2f position, Game game) {
+    public BombTarget(Vector2f position, Game game) {
         super(game.getNextPersistantId(), position, 0, game, Type.BOMB_TARGET);
-        
-        this.owner = owner;
         
         this.bounds.width = 64;
         this.bounds.height = 32;
@@ -43,13 +39,6 @@ public class BombTarget extends Entity {
         setNetEntity(netBombTarget);        
     }
 
-    /**
-     * @return the owner
-     */
-    public Team getOwner() {
-        return owner;
-    }
-    
     /**
      * Rotates the bomb target by 90 degrees, this will only
      * do it once
