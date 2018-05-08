@@ -1409,7 +1409,7 @@ public class ClientGame {
                 }
             }
         }
-	}
+
 
 	private void setSoundType(NetSound snd, Vector2f pos) {
 		switch(snd.getSoundType()) {
