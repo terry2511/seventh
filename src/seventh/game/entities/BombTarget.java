@@ -9,7 +9,7 @@ import seventh.game.Team;
 import seventh.game.net.NetBombTarget;
 import seventh.game.net.NetEntity;
 import seventh.math.Vector2f;
-
+ 
 /**
  * A {@link BombTarget} is something that a {@link Bomb} can blow up.  This is
  * used for objective game types.  A {@link BombTarget} may be a Radio communication
