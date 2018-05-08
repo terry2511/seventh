@@ -244,5 +244,5 @@ public interface GameInfo {
      * @return true if reachable (i.e., in sight or projectile can pierce)
      */
     public abstract boolean isEntityReachable(Entity other, Vector2f origin, Vector2f dir);
-
+ 
 }
