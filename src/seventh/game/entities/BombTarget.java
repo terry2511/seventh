@@ -31,7 +31,7 @@ public class BombTarget extends Entity {
      */
     public BombTarget(Team owner, Vector2f position, Game game) {
         super(game.getNextPersistantId(), position, 0, game, Type.BOMB_TARGET);
-        
+         
         this.owner = owner;
         
         this.bounds.width = 64;
