@@ -182,10 +182,7 @@ public interface GameInfo {
      * @return true if it does.
      */
     public abstract boolean doesTouchOthers(Entity ent);
-    public abstract boolean doesTouchOthers(Entity ent, boolean invokeTouch);
 
-    public boolean doesTouchEntity(Rectangle bounds);
-    
     /**
      * Determines if the supplied entity touches another
      * entity.  If the {@link Entity#onTouch} listener
@@ -244,5 +241,5 @@ public interface GameInfo {
      * @return true if reachable (i.e., in sight or projectile can pierce)
      */
     public abstract boolean isEntityReachable(Entity other, Vector2f origin, Vector2f dir);
- 
+
 }
