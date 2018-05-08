@@ -112,7 +112,7 @@ import seventh.shared.Updatable;
  *
  */
 public class Game implements GameInfo, Debugable, Updatable {
-    
+     
     
     /**
      * Null Node Data.
@@ -814,16 +814,14 @@ public class Game implements GameInfo, Debugable, Updatable {
      */
     @Override
     public void update(TimeStep timeStep) {        
-        updateEntity(timeStep);            
-        
+        updateEntity(timeStep);             
         this.aiSystem.update(timeStep);
         this.gameTimers.update(timeStep);
         this.gameTriggers.update(timeStep);
-        
         this.gameType.update(this, timeStep);
         this.time = this.gameType.getRemainingTime();
     }
-
+ 
 
 	private void updateEntity(TimeStep timeStep) {
 		for(int i = 0; i < entities.length; i++) {
@@ -1288,52 +1286,56 @@ public class Game implements GameInfo, Debugable, Updatable {
                 if(Team.SPECTATOR_TEAM_ID != teamId) {
                     player.stopSpectating();
                 }
-                
-                /* make sure the player has the teams weaponry */
-                switch(player.getWeaponClass()) {
-                    case THOMPSON:
-                        player.setWeaponClass(Type.MP40);
-                        break;
-                    case MP40: 
-                        player.setWeaponClass(Type.THOMPSON);
-                        break;
-                        
-                    case KAR98:
-                        player.setWeaponClass(Type.SPRINGFIELD);
-                        break;
-                    case SPRINGFIELD:
-                        player.setWeaponClass(Type.KAR98);
-                        break;
-                        
-                    case MP44:
-                        player.setWeaponClass(Type.M1_GARAND);
-                        break;
-                    case M1_GARAND:
-                        player.setWeaponClass(Type.MP44);
-                    
-                    case SHOTGUN:
-                    case ROCKET_LAUNCHER:
-                    case RISKER:
-                    case FLAME_THROWER:
-                        break;
-                        
-                    /* make the player use the default weapon */
-                    default: {
-                        switch(teamId) {
-                            case Team.ALLIED_TEAM_ID:
-                                player.setWeaponClass(Type.THOMPSON);
-                                break;
-                            case Team.AXIS_TEAM_ID:
-                                player.setWeaponClass(Type.MP40);
-                                break;
-                        }
-                    }
-                }
+                switchWeaponByTeam(teamId, player);
             }
         }
                     
         return playerSwitched;
     }
+
+
+	private void switchWeaponByTeam(byte teamId, Player player) {
+		/* make sure the player has the teams weaponry */
+		switch(player.getWeaponClass()) {
+		    case THOMPSON:
+		        player.setWeaponClass(Type.MP40);
+		        break;
+		    case MP40: 
+		        player.setWeaponClass(Type.THOMPSON);
+		        break;
+		        
+		    case KAR98:
+		        player.setWeaponClass(Type.SPRINGFIELD);
+		        break;
+		    case SPRINGFIELD:
+		        player.setWeaponClass(Type.KAR98);
+		        break;
+		        
+		    case MP44:
+		        player.setWeaponClass(Type.M1_GARAND);
+		        break;
+		    case M1_GARAND:
+		        player.setWeaponClass(Type.MP44);
+		    
+		    case SHOTGUN:
+		    case ROCKET_LAUNCHER:
+		    case RISKER:
+		    case FLAME_THROWER:
+		        break;
+		        
+		    /* make the player use the default weapon */
+		    default: {
+		        switch(teamId) {
+		            case Team.ALLIED_TEAM_ID:
+		                break;
+		                player.setWeaponClass(Type.THOMPSON);
+		            case Team.AXIS_TEAM_ID:
+		                player.setWeaponClass(Type.MP40);
+		                break;
+		        }
+		    }
+		}
+	}
     
     /**
      * A player has requested to switch its weapon class
